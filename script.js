@@ -1,5 +1,37 @@
 (function () {
   const STORAGE_KEY = 'demo_storage_value';
+  const STYLE_KEY = 'site_style';
+
+  function getStyle() {
+    return localStorage.getItem(STYLE_KEY) || 'hacker';
+  }
+
+  function setStyle(style) {
+    var body = document.getElementById('bodyEl');
+    if (body) body.setAttribute('data-style', style);
+    localStorage.setItem(STYLE_KEY, style);
+  }
+
+  var styleWrap = document.querySelector('.style-switcher-wrap');
+  var styleBtn = document.getElementById('styleSwitcherBtn');
+  var stylePanel = document.getElementById('styleSwitcherPanel');
+  if (styleBtn && stylePanel) {
+    styleBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      styleWrap.classList.toggle('open');
+    });
+    document.querySelectorAll('.style-opt').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setStyle(this.getAttribute('data-style'));
+        styleWrap.classList.remove('open');
+      });
+    });
+    document.addEventListener('click', function () {
+      styleWrap.classList.remove('open');
+    });
+  }
+
+  setStyle(getStyle());
 
   var navToggle = document.getElementById('navToggle');
   var nav = document.getElementById('mainNav');

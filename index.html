@@ -8,9 +8,21 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Unbounded:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600&family=Orbitron:wght@500&family=VT323&family=Unbounded:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="bodyEl" data-style="hacker">
+  <div class="style-switcher-wrap">
+    <button type="button" class="style-switcher-btn" id="styleSwitcherBtn" aria-label="Стиль">Стиль</button>
+    <div class="style-switcher-panel" id="styleSwitcherPanel">
+      <button type="button" class="style-opt" data-style="hacker">Хакер</button>
+      <button type="button" class="style-opt" data-style="product">Продукт</button>
+      <button type="button" class="style-opt" data-style="neon">Неон</button>
+      <button type="button" class="style-opt" data-style="minimal">Минимализм</button>
+      <button type="button" class="style-opt" data-style="retro">Ретро</button>
+      <button type="button" class="style-opt" data-style="glass">Стекло</button>
+      <button type="button" class="style-opt" data-style="ide">IDE</button>
+    </div>
+  </div>
   <button id="themeToggle" class="theme-toggle" aria-label="Тема">◐</button>
   <nav class="nav" id="mainNav">
     <button type="button" class="nav-toggle" id="navToggle" aria-label="Меню" aria-expanded="false">Навигация</button>
