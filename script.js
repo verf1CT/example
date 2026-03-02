@@ -771,6 +771,138 @@
   refreshCookies();
   document.getElementById('cookiesRefresh').addEventListener('click', refreshCookies);
 
+  document.getElementById('baseConvert').addEventListener('click', function () {
+    var input = document.getElementById('baseInput').value.trim();
+    var from = parseInt(document.getElementById('baseFrom').value, 10);
+    var to = parseInt(document.getElementById('baseTo').value, 10);
+    var out = document.getElementById('baseOutput');
+    try {
+      var num = parseInt(input, from);
+      if (isNaN(num)) throw new Error('Не число');
+      out.textContent = to === 10 ? num : num.toString(to).toUpperCase();
+    } catch (e) { out.textContent = 'Ошибка'; }
+  });
+
+  document.querySelectorAll('.case-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var s = document.getElementById('caseInput').value;
+      var mode = this.getAttribute('data-case');
+      var result = '';
+      if (mode === 'upper') result = s.toUpperCase();
+      else if (mode === 'lower') result = s.toLowerCase();
+      else if (mode === 'title') result = s.toLowerCase().replace(/(^|\s)\S/g, function (m) { return m.toUpperCase(); });
+      else if (mode === 'camel') {
+        result = s.toLowerCase().replace(/(\s|^)(\w)/g, function (_, __, c) { return c.toUpperCase(); }).replace(/\s/g, '');
+        if (result.length) result = result[0].toLowerCase() + result.slice(1);
+      }
+      document.getElementById('caseInput').value = result;
+      document.getElementById('caseOutput').textContent = result;
+    });
+  });
+
+  document.getElementById('tsToDate').addEventListener('click', function () {
+    var v = document.getElementById('tsInput').value.trim();
+    var out = document.getElementById('tsOutput');
+    var num = parseInt(v, 10);
+    if (!isNaN(num)) {
+      var d = new Date(num * 1000);
+      out.textContent = d.toLocaleString('ru-RU');
+    } else out.textContent = new Date(v).toLocaleString('ru-RU') || '—';
+  });
+  document.getElementById('tsToStamp').addEventListener('click', function () {
+    document.getElementById('tsInput').value = '';
+    document.getElementById('tsOutput').textContent = Math.floor(Date.now() / 1000);
+  });
+
+  var loremWords = 'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'.split(' ');
+  document.getElementById('loremGen').addEventListener('click', function () {
+    var n = parseInt(document.getElementById('loremCount').value, 10) || 5;
+    var unit = document.getElementById('loremUnit').value;
+    var out = document.getElementById('loremOutput');
+    if (unit === 'words') {
+      var arr = [];
+      for (var i = 0; i < n; i++) arr.push(loremWords[Math.floor(Math.random() * loremWords.length)]);
+      out.textContent = arr.join(' ');
+    } else {
+      var s = [];
+      for (var j = 0; j < n; j++) {
+        var len = 5 + Math.floor(Math.random() * 8);
+        var w = [];
+        for (var k = 0; k < len; k++) w.push(loremWords[Math.floor(Math.random() * loremWords.length)]);
+        w[0] = w[0].charAt(0).toUpperCase() + w[0].slice(1);
+        s.push(w.join(' ') + '.');
+      }
+      out.textContent = s.join(' ');
+    }
+  });
+
+  document.getElementById('reverseBtn').addEventListener('click', function () {
+    var s = document.getElementById('reverseInput').value;
+    document.getElementById('reverseOutput').textContent = s.split('').reverse().join('');
+  });
+
+  function rot13(s) {
+    return s.replace(/[a-zA-Z]/g, function (c) {
+      var base = c <= 'Z' ? 65 : 97;
+      return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+    });
+  }
+  document.getElementById('rot13Btn').addEventListener('click', function () {
+    var s = document.getElementById('rot13Input').value;
+    document.getElementById('rot13Output').textContent = rot13(s);
+  });
+
+  var escapeDiv = document.createElement('div');
+  document.getElementById('htmlEscapeBtn').addEventListener('click', function () {
+    var s = document.getElementById('htmlEscapeInput').value;
+    escapeDiv.textContent = s;
+    document.getElementById('htmlEscapeOutput').textContent = escapeDiv.innerHTML;
+  });
+  document.getElementById('htmlUnescapeBtn').addEventListener('click', function () {
+    var s = document.getElementById('htmlEscapeInput').value;
+    escapeDiv.innerHTML = s;
+    document.getElementById('htmlEscapeOutput').textContent = escapeDiv.textContent;
+  });
+
+  var lastKeyEl = document.getElementById('lastKeyOutput');
+  document.addEventListener('keydown', function (e) {
+    if (!lastKeyEl) return;
+    lastKeyEl.textContent = 'key: "' + e.key + '"  code: ' + e.code + '  keyCode: ' + e.keyCode;
+  });
+
+  var countdownTimer = null;
+  document.getElementById('countdownStart').addEventListener('click', function () {
+    var min = parseInt(document.getElementById('countdownMin').value, 10) || 1;
+    var total = min * 60;
+    var out = document.getElementById('countdownOutput');
+    if (countdownTimer) clearInterval(countdownTimer);
+    countdownTimer = setInterval(function () {
+      total--;
+      var m = Math.floor(total / 60);
+      var s = total % 60;
+      out.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+      if (total <= 0) {
+        clearInterval(countdownTimer);
+        countdownTimer = null;
+        if (navigator.vibrate) navigator.vibrate(200);
+        showToast('Время вышло!', 'info');
+      }
+    }, 1000);
+  });
+  document.getElementById('countdownStop').addEventListener('click', function () {
+    if (countdownTimer) clearInterval(countdownTimer);
+    countdownTimer = null;
+    document.getElementById('countdownOutput').textContent = '0:00';
+  });
+
+  document.getElementById('myIpBtn').addEventListener('click', function () {
+    var out = document.getElementById('myIpOutput');
+    out.textContent = '...';
+    fetch('https://api.ipify.org?format=json').then(function (r) { return r.json(); }).then(function (d) {
+      out.textContent = d.ip || '—';
+    }).catch(function () { out.textContent = 'Ошибка'; });
+  });
+
   var particlesPresets = {
     default: {
       particles: {

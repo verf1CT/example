@@ -35,6 +35,7 @@
     <a href="#share" class="nav-link">Поделиться</a>
     <a href="#utils" class="nav-link">Утилиты</a>
     <a href="#crypto" class="nav-link">Crypto</a>
+    <a href="#tools" class="nav-link">Tools</a>
     <a href="#ping" class="nav-link">Ping</a>
     <a href="#cookies" class="nav-link">Cookies</a>
     <a href="#contact" class="nav-link">Контакты</a>
@@ -364,6 +365,88 @@
         <p class="datetime-value">Дата и время: <strong id="datetimeDisplay">—</strong></p>
         <p class="datetime-value">Часовой пояс: <strong id="timezoneDisplay">—</strong></p>
         <button type="button" class="btn btn-secondary btn-sm" id="copyUrlBtn">Копировать URL страницы</button>
+      </div>
+    </div>
+  </section>
+  <section id="tools" class="section">
+    <h2 class="section-title">[ TOOLS ]</h2>
+    <p class="util-desc">Конвертеры, генераторы, разное.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <h3 class="tool-title">Системы счисления</h3>
+        <input type="text" id="baseInput" placeholder="Число">
+        <div class="tool-row">
+          <select id="baseFrom"><option value="10">Dec</option><option value="2">Bin</option><option value="16">Hex</option></select>
+          <span>→</span>
+          <select id="baseTo"><option value="10">Dec</option><option value="2">Bin</option><option value="16">Hex</option></select>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" id="baseConvert">Конвертировать</button>
+        <pre id="baseOutput" class="tool-output"></pre>
+      </div>
+      <div class="tool-card">
+        <h3 class="tool-title">Регистр текста</h3>
+        <textarea id="caseInput" rows="2" placeholder="Текст"></textarea>
+        <div class="tool-row wrap">
+          <button type="button" class="btn btn-secondary btn-sm case-btn" data-case="upper">UPPER</button>
+          <button type="button" class="btn btn-secondary btn-sm case-btn" data-case="lower">lower</button>
+          <button type="button" class="btn btn-secondary btn-sm case-btn" data-case="title">Title Case</button>
+          <button type="button" class="btn btn-secondary btn-sm case-btn" data-case="camel">camelCase</button>
+        </div>
+        <pre id="caseOutput" class="tool-output"></pre>
+      </div>
+      <div class="tool-card">
+        <h3 class="tool-title">Timestamp ↔ Дата</h3>
+        <input type="text" id="tsInput" placeholder="Unix sec или дата">
+        <div class="tool-row">
+          <button type="button" class="btn btn-primary btn-sm" id="tsToDate">→ Дата</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="tsToStamp">Сейчас → stamp</button>
+        </div>
+        <pre id="tsOutput" class="tool-output"></pre>
+      </div>
+      <div class="tool-card">
+        <h3 class="tool-title">Lorem ipsum</h3>
+        <input type="number" id="loremCount" min="1" max="50" value="5" placeholder="Кол-во">
+        <select id="loremUnit"><option value="words">слов</option><option value="sentences">предложений</option></select>
+        <button type="button" class="btn btn-secondary btn-sm" id="loremGen">Сгенерировать</button>
+        <pre id="loremOutput" class="tool-output"></pre>
+      </div>
+      <div class="tool-card">
+        <h3 class="tool-title">Разворот строки</h3>
+        <textarea id="reverseInput" rows="2" placeholder="Текст"></textarea>
+        <button type="button" class="btn btn-secondary btn-sm" id="reverseBtn">Развернуть</button>
+        <pre id="reverseOutput" class="tool-output"></pre>
+      </div>
+      <div class="tool-card">
+        <h3 class="tool-title">ROT13</h3>
+        <textarea id="rot13Input" rows="2" placeholder="Текст"></textarea>
+        <button type="button" class="btn btn-secondary btn-sm" id="rot13Btn">ROT13</button>
+        <pre id="rot13Output" class="tool-output"></pre>
+      </div>
+      <div class="tool-card">
+        <h3 class="tool-title">HTML Escape</h3>
+        <textarea id="htmlEscapeInput" rows="2" placeholder="Текст"></textarea>
+        <div class="tool-row">
+          <button type="button" class="btn btn-secondary btn-sm" id="htmlEscapeBtn">Escape</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="htmlUnescapeBtn">Unescape</button>
+        </div>
+        <pre id="htmlEscapeOutput" class="tool-output"></pre>
+      </div>
+      <div class="tool-card">
+        <h3 class="tool-title">Последняя клавиша</h3>
+        <p class="tool-hint">Нажми любую клавишу (фокус на странице)</p>
+        <pre id="lastKeyOutput" class="tool-output">—</pre>
+      </div>
+      <div class="tool-card">
+        <h3 class="tool-title">Обратный отсчёт</h3>
+        <input type="number" id="countdownMin" min="1" max="60" value="1" placeholder="Минут">
+        <button type="button" class="btn btn-primary btn-sm" id="countdownStart">Старт</button>
+        <button type="button" class="btn btn-secondary btn-sm" id="countdownStop">Стоп</button>
+        <pre id="countdownOutput" class="tool-output">0:00</pre>
+      </div>
+      <div class="tool-card">
+        <h3 class="tool-title">Мой IP</h3>
+        <button type="button" class="btn btn-primary btn-sm" id="myIpBtn">Узнать IP</button>
+        <pre id="myIpOutput" class="tool-output">—</pre>
       </div>
     </div>
   </section>

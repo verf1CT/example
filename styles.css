@@ -1300,6 +1300,67 @@ body::after {
   color: var(--accent);
 }
 
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.tool-card {
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  padding: 16px;
+  border-radius: 0;
+  box-shadow: var(--shadow);
+}
+
+.tool-title {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.tool-card input[type="text"],
+.tool-card input[type="number"],
+.tool-card textarea,
+.tool-card select {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border: 1px solid var(--accent);
+  background: rgba(0,0,0,0.5);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+
+.tool-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.tool-row.wrap { flex-wrap: wrap; }
+
+.tool-output {
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,255,65,0.3);
+  font-size: 0.8rem;
+  min-height: 36px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.tool-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
 .crypto-tabs { margin-bottom: 16px; }
 .crypto-panel { display: none; background: var(--bg-card); padding: 24px; border: 1px solid var(--accent); margin-top: 0; }
 .crypto-panel.active { display: block; }
