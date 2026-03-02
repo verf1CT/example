@@ -1055,21 +1055,25 @@
     }
   };
 
-  var particlesContainer = document.getElementById('particles-demo');
-  if (particlesContainer && typeof window.particlesJS === 'function') {
-    window.particlesJS('particles-demo', particlesPresets.default);
-    document.querySelectorAll('.particles-preset').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var preset = this.getAttribute('data-preset');
-        if (!particlesPresets[preset]) return;
-        document.querySelectorAll('.particles-preset').forEach(function (b) { b.classList.remove('active'); });
-        this.classList.add('active');
-        if (window.pJSDom && window.pJSDom.length > 0) {
-          try { window.pJSDom[0].fn.vendors.destroypJS(); } catch (e) {}
-          window.pJSDom = [];
-        }
-        window.particlesJS('particles-demo', particlesPresets[preset]);
+  function initParticles() {
+    var container = document.getElementById('particles-demo');
+    if (!container || typeof window.particlesJS !== 'function') return;
+    try {
+      window.particlesJS('particles-demo', particlesPresets.default);
+      document.querySelectorAll('.particles-preset').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var preset = this.getAttribute('data-preset');
+          if (!particlesPresets[preset]) return;
+          document.querySelectorAll('.particles-preset').forEach(function (b) { b.classList.remove('active'); });
+          this.classList.add('active');
+          if (window.pJSDom && window.pJSDom.length > 0) {
+            try { window.pJSDom[0].fn.vendors.destroypJS(); } catch (e) {}
+            window.pJSDom = [];
+          }
+          window.particlesJS('particles-demo', particlesPresets[preset]);
+        });
       });
-    });
+    } catch (e) { console.warn('Particles.js init:', e); }
   }
+  window.addEventListener('load', initParticles);
 })();
