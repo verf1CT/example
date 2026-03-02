@@ -692,12 +692,16 @@ body::after {
 .toast {
   padding: 16px 20px;
   border-radius: var(--radius);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: 500;
   box-shadow: var(--shadow);
   animation: slideIn 0.3s ease-out;
   display: flex;
   align-items: center;
   gap: 12px;
+  background: #111;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 @keyframes slideIn {
@@ -711,9 +715,14 @@ body::after {
   }
 }
 
-.toast.success { background: var(--success); color: #fff; }
-.toast.error { background: var(--danger); color: #fff; }
-.toast.info { background: var(--info); color: #fff; }
+.toast.success { border-left: 4px solid #00ff41; }
+.toast.error { border-left: 4px solid #ff0040; }
+.toast.info { border-left: 4px solid #00ffff; }
+
+[data-theme="light"] .toast {
+  background: #1a1a2e;
+  color: #e8e8e8;
+}
 
 .drag-zone {
   display: flex;
