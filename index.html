@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Возможности</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Unbounded:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <button id="themeToggle" class="theme-toggle" aria-label="Тема">◐</button>
+  <nav class="nav">
+    <a href="#hero" class="nav-link">Главная</a>
+    <a href="#counters" class="nav-link">Счётчики</a>
+    <a href="#tabs" class="nav-link">Вкладки</a>
+    <a href="#accordion" class="nav-link">Аккордеон</a>
+    <a href="#carousel" class="nav-link">Карусель</a>
+    <a href="#modal" class="nav-link">Модалка</a>
+    <a href="#form" class="nav-link">Форма</a>
+    <a href="#drag" class="nav-link">Перетаскивание</a>
+    <a href="#storage" class="nav-link">Хранилище</a>
+    <a href="#canvas" class="nav-link">Canvas</a>
+    <a href="#particles" class="nav-link">Particles</a>
+    <a href="#api" class="nav-link">API</a>
+    <a href="#password" class="nav-link">Пароль</a>
+    <a href="#table" class="nav-link">Таблица</a>
+    <a href="#timer" class="nav-link">Таймер</a>
+    <a href="#color" class="nav-link">Цвет</a>
+    <a href="#speech" class="nav-link">Речь</a>
+    <a href="#geo" class="nav-link">Геолокация</a>
+    <a href="#notifications" class="nav-link">Уведомления</a>
+    <a href="#network" class="nav-link">Сеть</a>
+    <a href="#share" class="nav-link">Поделиться</a>
+    <a href="#utils" class="nav-link">Утилиты</a>
+    <a href="#crypto" class="nav-link">Crypto</a>
+    <a href="#ping" class="nav-link">Ping</a>
+    <a href="#cookies" class="nav-link">Cookies</a>
+    <a href="#contact" class="nav-link">Контакты</a>
+  </nav>
+  <header id="hero" class="hero">
+    <div class="hero-bg"></div>
+    <h1 class="hero-title glitch" data-text="SYSTEM_ACCESS">SYSTEM_ACCESS</h1>
+    <div class="hero-terminal" id="heroTerminal">
+      <div class="terminal-line"><span class="prompt">root@local:~$</span> ./init.sh</div>
+      <div class="terminal-line" id="terminalOutput"></div>
+      <span class="cursor" id="terminalCursor"></span>
+    </div>
+    <p class="hero-sub">[ модули загружены — выбери секцию в навигации ]</p>
+    <button class="btn btn-primary scroll-to" data-target="#counters">[ ENTER ]</button>
+  </header>
+  <section id="counters" class="section counters-section">
+    <h2 class="section-title">Анимированные счётчики</h2>
+    <div class="counters">
+      <div class="counter-card" data-target="1000"><span class="counter-value">0</span><span class="counter-suffix">+</span><span class="counter-label">Проектов</span></div>
+      <div class="counter-card" data-target="99"><span class="counter-value">0</span><span class="counter-suffix">%</span><span class="counter-label">Качество</span></div>
+      <div class="counter-card" data-target="24"><span class="counter-value">0</span><span class="counter-suffix">/7</span><span class="counter-label">Поддержка</span></div>
+    </div>
+  </section>
+  <section id="tabs" class="section tabs-section">
+    <h2 class="section-title">Вкладки</h2>
+    <div class="tabs">
+      <div class="tab-headers">
+        <button class="tab-btn active" data-tab="1">Вкладка 1</button>
+        <button class="tab-btn" data-tab="2">Вкладка 2</button>
+        <button class="tab-btn" data-tab="3">Вкладка 3</button>
+      </div>
+      <div class="tab-panels">
+        <div class="tab-panel active" data-panel="1">Содержимое первой вкладки. Здесь может быть любой контент.</div>
+        <div class="tab-panel" data-panel="2">Вторая вкладка с другим текстом и возможностью встроить виджеты.</div>
+        <div class="tab-panel" data-panel="3">Третья вкладка — для дополнительной информации или настроек.</div>
+      </div>
+    </div>
+  </section>
+  <section id="accordion" class="section accordion-section">
+    <h2 class="section-title">Аккордеон</h2>
+    <div class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-trigger">Пункт 1</button>
+        <div class="accordion-content"><p>Скрытый контент первого пункта. Открывается по клику.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger">Пункт 2</button>
+        <div class="accordion-content"><p>Второй блок с произвольным содержимым.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger">Пункт 3</button>
+        <div class="accordion-content"><p>Третий пункт аккордеона.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="carousel" class="section carousel-section">
+    <h2 class="section-title">Карусель</h2>
+    <div class="carousel">
+      <button class="carousel-prev" aria-label="Назад">‹</button>
+      <div class="carousel-track">
+        <div class="carousel-slide active"><div class="slide-inner">Слайд 1</div></div>
+        <div class="carousel-slide"><div class="slide-inner">Слайд 2</div></div>
+        <div class="carousel-slide"><div class="slide-inner">Слайд 3</div></div>
+      </div>
+      <button class="carousel-next" aria-label="Вперёд">›</button>
+      <div class="carousel-dots"></div>
+    </div>
+  </section>
+  <section id="modal" class="section modal-section">
+    <h2 class="section-title">Модальное окно</h2>
+    <button class="btn btn-primary open-modal">Открыть модалку</button>
+    <div id="modalOverlay" class="modal-overlay">
+      <div class="modal">
+        <button class="modal-close" aria-label="Закрыть">×</button>
+        <h3>Модальное окно</h3>
+        <p>Закройте по кнопке или клику вне окна.</p>
+      </div>
+    </div>
+  </section>
+  <section id="form" class="section form-section">
+    <h2 class="section-title">Форма с валидацией</h2>
+    <form class="demo-form" id="demoForm">
+      <div class="form-group">
+        <label for="name">Имя</label>
+        <input type="text" id="name" name="name" required minlength="2" placeholder="Минимум 2 символа">
+        <span class="form-error"></span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="example@mail.com">
+        <span class="form-error"></span>
+      </div>
+      <div class="form-group">
+        <label for="message">Сообщение</label>
+        <textarea id="message" name="message" rows="4" required minlength="10" placeholder="Минимум 10 символов"></textarea>
+        <span class="form-error"></span>
+      </div>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+  </section>
+  <section id="toast-demo" class="section">
+    <h2 class="section-title">Уведомления (Toast)</h2>
+    <div class="toast-buttons">
+      <button class="btn btn-secondary show-toast" data-type="success">Успех</button>
+      <button class="btn btn-secondary show-toast" data-type="error">Ошибка</button>
+      <button class="btn btn-secondary show-toast" data-type="info">Инфо</button>
+    </div>
+  </section>
+  <section id="drag" class="section drag-section">
+    <h2 class="section-title">Перетаскивание</h2>
+    <div class="drag-zone" id="dragZone">
+      <div class="drag-item" draggable="true" data-id="1">Элемент 1</div>
+      <div class="drag-item" draggable="true" data-id="2">Элемент 2</div>
+      <div class="drag-item" draggable="true" data-id="3">Элемент 3</div>
+    </div>
+  </section>
+  <section id="storage" class="section storage-section">
+    <h2 class="section-title">LocalStorage</h2>
+    <div class="storage-controls">
+      <input type="text" id="storageInput" placeholder="Введите текст">
+      <button class="btn btn-primary" id="storageSave">Сохранить</button>
+      <button class="btn btn-secondary" id="storageClear">Очистить</button>
+    </div>
+    <p class="storage-value">Сохранённое значение: <strong id="storageDisplay">—</strong></p>
+  </section>
+  <section id="search" class="section search-section">
+    <h2 class="section-title">Поиск и фильтр</h2>
+    <input type="search" id="searchInput" class="search-input" placeholder="Поиск по списку...">
+    <ul class="search-list" id="searchList">
+      <li data-text="JavaScript">JavaScript</li>
+      <li data-text="HTML">HTML</li>
+      <li data-text="CSS">CSS</li>
+      <li data-text="React">React</li>
+      <li data-text="Node.js">Node.js</li>
+      <li data-text="TypeScript">TypeScript</li>
+      <li data-text="Vue">Vue</li>
+      <li data-text="Python">Python</li>
+    </ul>
+  </section>
+  <section id="canvas" class="section canvas-section">
+    <h2 class="section-title">Canvas анимация</h2>
+    <canvas id="demoCanvas" width="400" height="200"></canvas>
+  </section>
+  <section id="particles" class="section particles-section">
+    <h2 class="section-title">Particles.js — разные настройки</h2>
+    <p class="particles-desc">Выберите пресет, чтобы применить другой набор параметров (число частиц, связи, скорость, цвет).</p>
+    <div class="particles-presets">
+      <button type="button" class="btn btn-secondary particles-preset active" data-preset="default">По умолчанию</button>
+      <button type="button" class="btn btn-secondary particles-preset" data-preset="dense">Много частиц</button>
+      <button type="button" class="btn btn-secondary particles-preset" data-preset="sparse">Мало частиц</button>
+      <button type="button" class="btn btn-secondary particles-preset" data-preset="fast">Быстро</button>
+      <button type="button" class="btn btn-secondary particles-preset" data-preset="nolines">Без связей</button>
+      <button type="button" class="btn btn-secondary particles-preset" data-preset="big">Крупные</button>
+    </div>
+    <div id="particles-demo" class="particles-container"></div>
+  </section>
+  <section id="api" class="section api-section">
+    <h2 class="section-title">Запрос к API</h2>
+    <button class="btn btn-primary" id="fetchBtn">Загрузить случайного пользователя</button>
+    <div id="apiResult" class="api-result"></div>
+  </section>
+  <section id="password" class="section">
+    <h2 class="section-title">Генератор паролей</h2>
+    <div class="password-block">
+      <div class="form-group">
+        <label>Длина <output id="passLenOut">16</output></label>
+        <input type="range" id="passLen" min="8" max="32" value="16">
+      </div>
+      <div class="password-options">
+        <label><input type="checkbox" id="passDigits" checked> Цифры</label>
+        <label><input type="checkbox" id="passUpper" checked> Заглавные</label>
+        <label><input type="checkbox" id="passLower" checked> Строчные</label>
+        <label><input type="checkbox" id="passSymbols" checked> Символы</label>
+      </div>
+      <div class="password-row">
+        <input type="text" id="passOutput" readonly class="password-output">
+        <button class="btn btn-primary" id="passGenerate">Сгенерировать</button>
+        <button class="btn btn-secondary" id="passCopy">Копировать</button>
+      </div>
+    </div>
+  </section>
+  <section id="table" class="section">
+    <h2 class="section-title">Таблица с сортировкой</h2>
+    <div class="table-wrap">
+      <table class="sortable-table" id="sortableTable">
+        <thead>
+          <tr>
+            <th data-sort="name">Имя</th>
+            <th data-sort="age">Возраст</th>
+            <th data-sort="city">Город</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Анна</td><td>28</td><td>Москва</td></tr>
+          <tr><td>Борис</td><td>34</td><td>Казань</td></tr>
+          <tr><td>Вика</td><td>22</td><td>СПб</td></tr>
+          <tr><td>Глеб</td><td>45</td><td>Новосибирск</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-actions">
+      <button type="button" class="btn btn-secondary" id="exportCsvBtn">Экспорт в CSV</button>
+    </div>
+  </section>
+  <section id="timer" class="section">
+    <h2 class="section-title">Секундомер</h2>
+    <div class="stopwatch-block">
+      <div class="stopwatch-display" id="stopwatchDisplay">0:00:00.0</div>
+      <div class="stopwatch-buttons">
+        <button class="btn btn-primary" id="stopwatchStart">Старт</button>
+        <button class="btn btn-secondary" id="stopwatchStop">Стоп</button>
+        <button class="btn btn-secondary" id="stopwatchReset">Сброс</button>
+      </div>
+    </div>
+  </section>
+  <section id="color" class="section">
+    <h2 class="section-title">Цветовой пикер</h2>
+    <div class="color-block">
+      <input type="color" id="colorPicker" value="#00d4aa">
+      <div class="color-output">
+        <span>HEX: <strong id="colorHex">#00d4aa</strong></span>
+        <span>RGB: <strong id="colorRgb">0, 212, 170</strong></span>
+        <button class="btn btn-secondary btn-sm" id="colorCopy">Копировать HEX</button>
+      </div>
+    </div>
+  </section>
+  <section id="svg-demo" class="section">
+    <h2 class="section-title">SVG-анимация</h2>
+    <div class="svg-block">
+      <svg class="svg-icon" viewBox="0 0 100 100" width="120" height="120">
+        <circle class="svg-circle" cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="4"/>
+        <path class="svg-path" d="M30 50 L45 65 L70 35" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </section>
+  <section id="chart" class="section">
+    <h2 class="section-title">График (Canvas)</h2>
+    <canvas id="chartCanvas" width="400" height="220"></canvas>
+  </section>
+  <section id="speech" class="section">
+    <h2 class="section-title">Синтез речи</h2>
+    <div class="speech-block">
+      <textarea id="speechText" rows="3" placeholder="Введите текст для озвучивания">Привет! Это синтез речи в браузере.</textarea>
+      <button class="btn btn-primary" id="speechBtn">Озвучить</button>
+      <button class="btn btn-secondary" id="speechStop">Остановить</button>
+    </div>
+  </section>
+  <section id="geo" class="section">
+    <h2 class="section-title">Геолокация</h2>
+    <button class="btn btn-primary" id="geoBtn">Получить координаты</button>
+    <div id="geoResult" class="api-result"></div>
+  </section>
+  <section id="copy" class="section">
+    <h2 class="section-title">Копирование в буфер</h2>
+    <div class="copy-block">
+      <input type="text" id="copyInput" value="https://t.me/verf1CT" placeholder="Текст для копирования">
+      <button class="btn btn-primary" id="copyBtn">Скопировать</button>
+    </div>
+  </section>
+  <section id="fullscreen" class="section">
+    <h2 class="section-title">Полноэкранный режим</h2>
+    <button class="btn btn-primary" id="fullscreenBtn">Перейти в полноэкранный режим</button>
+  </section>
+  <section id="vibrate" class="section">
+    <h2 class="section-title">Вибрация (мобильные)</h2>
+    <button class="btn btn-secondary" id="vibrateBtn">Вибрация</button>
+  </section>
+  <section id="notifications" class="section">
+    <h2 class="section-title">Уведомления браузера</h2>
+    <p class="util-desc">Запрос разрешения и показ уведомления вне страницы.</p>
+    <button class="btn btn-primary" id="notifyRequest">Разрешить уведомления</button>
+    <button class="btn btn-secondary" id="notifyShow">Показать тестовое уведомление</button>
+    <span id="notifyStatus" class="util-status"></span>
+  </section>
+  <section id="network" class="section">
+    <h2 class="section-title">Сеть и устройство</h2>
+    <p class="util-desc">Статус подключения и параметры экрана.</p>
+    <div class="network-grid">
+      <div class="network-card">
+        <span class="network-label">Подключение</span>
+        <strong id="onlineStatus" class="network-value">—</strong>
+      </div>
+      <div class="network-card">
+        <span class="network-label">Ширина × Высота</span>
+        <strong id="viewportSize" class="network-value">—</strong>
+      </div>
+      <div class="network-card">
+        <span class="network-label">Pixel ratio</span>
+        <strong id="pixelRatio" class="network-value">—</strong>
+      </div>
+    </div>
+    <button class="btn btn-secondary btn-sm" id="networkRefresh">Обновить</button>
+  </section>
+  <section id="share" class="section">
+    <h2 class="section-title">Поделиться (Web Share API)</h2>
+    <p class="util-desc">Кнопка «Поделиться» открывает системное меню (приложение, соцсети).</p>
+    <button class="btn btn-primary" id="shareBtn">Поделиться страницей</button>
+    <span id="shareStatus" class="util-status"></span>
+  </section>
+  <section id="utils" class="section">
+    <h2 class="section-title">Утилиты</h2>
+    <div class="utils-tabs">
+      <button type="button" class="utils-tab active" data-util="json">JSON</button>
+      <button type="button" class="utils-tab" data-util="url">URL</button>
+      <button type="button" class="utils-tab" data-util="textstats">Статистика текста</button>
+      <button type="button" class="utils-tab" data-util="datetime">Дата и время</button>
+    </div>
+    <div class="utils-panel active" data-panel="json">
+      <label>Вставьте JSON</label>
+      <textarea id="jsonInput" rows="4" placeholder='{"a": 1, "b": "текст"}'></textarea>
+      <div class="utils-row">
+        <button type="button" class="btn btn-primary" id="jsonFormat">Форматировать</button>
+        <button type="button" class="btn btn-secondary" id="jsonMinify">Минифицировать</button>
+      </div>
+      <pre id="jsonOutput" class="util-output"></pre>
+      <span id="jsonError" class="form-error"></span>
+    </div>
+    <div class="utils-panel" data-panel="url">
+      <label>Текст для кодирования / декодирования</label>
+      <textarea id="urlInput" rows="2" placeholder="Текст или закодированная строка"></textarea>
+      <div class="utils-row">
+        <button type="button" class="btn btn-primary" id="urlEncode">Закодировать</button>
+        <button type="button" class="btn btn-secondary" id="urlDecode">Декодировать</button>
+      </div>
+      <pre id="urlOutput" class="util-output"></pre>
+    </div>
+    <div class="utils-panel" data-panel="textstats">
+      <label>Введите или вставьте текст</label>
+      <textarea id="textStatsInput" rows="5" placeholder="Текст для подсчёта..."></textarea>
+      <div id="textStatsOutput" class="textstats-output"></div>
+    </div>
+    <div class="utils-panel" data-panel="datetime">
+      <div class="datetime-block">
+        <p class="datetime-value">Дата и время: <strong id="datetimeDisplay">—</strong></p>
+        <p class="datetime-value">Часовой пояс: <strong id="timezoneDisplay">—</strong></p>
+        <button type="button" class="btn btn-secondary btn-sm" id="copyUrlBtn">Копировать URL страницы</button>
+      </div>
+    </div>
+  </section>
+  <section id="crypto" class="section">
+    <h2 class="section-title">[ CRYPTO ]</h2>
+    <p class="util-desc">Хеш SHA-256, Base64, шифр Цезаря.</p>
+    <div class="utils-tabs crypto-tabs">
+      <button type="button" class="utils-tab active" data-crypto="sha">SHA-256</button>
+      <button type="button" class="utils-tab" data-crypto="base64">Base64</button>
+      <button type="button" class="utils-tab" data-crypto="caesar">Caesar</button>
+    </div>
+    <div class="crypto-panel active" data-crypto="sha">
+      <label>Входные данные</label>
+      <textarea id="shaInput" rows="3" placeholder="Текст для хеширования"></textarea>
+      <button type="button" class="btn btn-primary" id="shaHash">Вычислить SHA-256</button>
+      <pre id="shaOutput" class="util-output terminal-box"></pre>
+    </div>
+    <div class="crypto-panel" data-crypto="base64">
+      <label>Текст</label>
+      <textarea id="b64Input" rows="2" placeholder="Строка для кодирования/декодирования"></textarea>
+      <div class="utils-row">
+        <button type="button" class="btn btn-primary" id="b64Encode">Encode</button>
+        <button type="button" class="btn btn-secondary" id="b64Decode">Decode</button>
+      </div>
+      <pre id="b64Output" class="util-output terminal-box"></pre>
+    </div>
+    <div class="crypto-panel" data-crypto="caesar">
+      <label>Сдвиг (1–25)</label>
+      <input type="number" id="caesarShift" min="1" max="25" value="3">
+      <label>Текст</label>
+      <textarea id="caesarInput" rows="2" placeholder="Текст для шифрования"></textarea>
+      <div class="utils-row">
+        <button type="button" class="btn btn-primary" id="caesarEncrypt">Шифровать</button>
+        <button type="button" class="btn btn-secondary" id="caesarDecrypt">Дешифровать</button>
+      </div>
+      <pre id="caesarOutput" class="util-output terminal-box"></pre>
+    </div>
+  </section>
+  <section id="ping" class="section">
+    <h2 class="section-title">[ PING ]</h2>
+    <p class="util-desc">Симуляция задержки (мс).</p>
+    <div class="copy-block">
+      <input type="text" id="pingHost" placeholder="host (например 127.0.0.1)" value="127.0.0.1">
+      <button type="button" class="btn btn-primary" id="pingBtn">Ping</button>
+    </div>
+    <div id="pingOutput" class="terminal-box" style="margin-top:16px;min-height:80px"></div>
+  </section>
+  <section id="cookies" class="section">
+    <h2 class="section-title">[ COOKIES ]</h2>
+    <p class="util-desc">Текущие cookies этой страницы.</p>
+    <button type="button" class="btn btn-secondary" id="cookiesRefresh">Обновить</button>
+    <pre id="cookiesOutput" class="util-output terminal-box" style="margin-top:12px;min-height:60px"></pre>
+  </section>
+  <section id="contact" class="section contact-section">
+    <h2 class="section-title">[ CONTACT ]</h2>
+    <p class="contact-text">Связь: <a href="https://t.me/verf1CT" target="_blank" rel="noopener" class="contact-link" data-tooltip="Написать в Telegram">Telegram — verf1CT</a></p>
+  </section>
+  <button id="backToTop" class="back-to-top" aria-label="Наверх">↑</button>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div id="toastContainer" class="toast-container"></div>
+  <div id="tooltip" class="tooltip"></div>
+  <script src="particles.js-master/particles.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
