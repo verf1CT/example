@@ -3,7 +3,7 @@
   const STYLE_KEY = 'site_style';
 
   function getStyle() {
-    return localStorage.getItem(STYLE_KEY) || 'product';
+    return localStorage.getItem(STYLE_KEY) || 'hacker';
   }
 
   function setStyle(style) {
