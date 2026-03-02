@@ -230,9 +230,9 @@ body::after {
 
 .style-switcher-wrap {
   position: fixed;
-  top: 20px;
-  right: 78px;
-  z-index: 998;
+  top: 12px;
+  right: 76px;
+  z-index: 1000;
 }
 
 .style-switcher-btn {
@@ -319,9 +319,9 @@ body::after {
 
 .theme-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1001;
+  top: 12px;
+  right: 14px;
+  z-index: 1000;
   width: 48px;
   height: 48px;
   border-radius: 0;
@@ -347,6 +347,7 @@ body::after {
   flex-wrap: wrap;
   gap: 6px;
   padding: 10px 14px;
+  padding-right: 200px;
   background: rgba(10,10,10,0.95);
   border-bottom: 1px solid var(--accent);
   box-shadow: 0 0 15px rgba(0,255,65,0.1);
@@ -1882,6 +1883,7 @@ body::after {
   }
   .nav {
     padding: 10px 14px;
+    padding-right: 130px;
     flex-wrap: nowrap;
   }
   .nav-toggle {
