@@ -178,8 +178,8 @@
     <canvas id="demoCanvas" width="400" height="200"></canvas>
   </section>
   <section id="particles" class="section particles-section">
-    <h2 class="section-title">Particles.js — разные настройки</h2>
-    <p class="particles-desc">Выберите пресет, чтобы применить другой набор параметров (число частиц, связи, скорость, цвет).</p>
+    <h2 class="section-title">Particles.js — свои настройки</h2>
+    <p class="particles-desc">Пресет или свои параметры ниже. Кнопка «Применить» перезапускает анимацию.</p>
     <div class="particles-presets">
       <button type="button" class="btn btn-secondary particles-preset active" data-preset="default">По умолчанию</button>
       <button type="button" class="btn btn-secondary particles-preset" data-preset="dense">Много частиц</button>
@@ -187,6 +187,60 @@
       <button type="button" class="btn btn-secondary particles-preset" data-preset="fast">Быстро</button>
       <button type="button" class="btn btn-secondary particles-preset" data-preset="nolines">Без связей</button>
       <button type="button" class="btn btn-secondary particles-preset" data-preset="big">Крупные</button>
+    </div>
+    <div class="particles-custom">
+      <h3 class="particles-custom-title">Свои настройки</h3>
+      <div class="particles-custom-grid">
+        <label class="particles-opt">
+          <span>Частиц</span>
+          <input type="range" id="pCount" min="10" max="250" value="80">
+          <output id="pCountOut">80</output>
+        </label>
+        <label class="particles-opt">
+          <span>Цвет</span>
+          <input type="color" id="pColor" value="#00ff41">
+        </label>
+        <label class="particles-opt">
+          <span>Размер</span>
+          <input type="range" id="pSize" min="1" max="12" value="3">
+          <output id="pSizeOut">3</output>
+        </label>
+        <label class="particles-opt">
+          <span>Скорость</span>
+          <input type="range" id="pSpeed" min="0.5" max="8" step="0.5" value="2">
+          <output id="pSpeedOut">2</output>
+        </label>
+        <label class="particles-opt particles-opt-check">
+          <input type="checkbox" id="pLines" checked> Связи между частицами
+        </label>
+        <label class="particles-opt">
+          <span>Расстояние связей</span>
+          <input type="range" id="pLineDist" min="50" max="250" value="120">
+          <output id="pLineDistOut">120</output>
+        </label>
+        <label class="particles-opt">
+          <span>Цвет связей</span>
+          <input type="color" id="pLineColor" value="#00ff41">
+        </label>
+        <label class="particles-opt">
+          <span>При наведении</span>
+          <select id="pHoverMode">
+            <option value="grab">Grab (притягивание)</option>
+            <option value="bubble">Bubble</option>
+            <option value="repulse">Repulse (отталкивание)</option>
+            <option value="none">Выкл</option>
+          </select>
+        </label>
+        <label class="particles-opt">
+          <span>При клике</span>
+          <select id="pClickMode">
+            <option value="push">Push (добавить)</option>
+            <option value="remove">Remove (убрать)</option>
+            <option value="none">Выкл</option>
+          </select>
+        </label>
+      </div>
+      <button type="button" class="btn btn-primary" id="pApply">Применить</button>
     </div>
     <div id="particles-demo" class="particles-container"></div>
   </section>

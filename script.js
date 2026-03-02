@@ -1071,6 +1071,85 @@
   };
 
   var particlesInited = false;
+
+  function getParticlesConfigFromForm() {
+    var count = parseInt(document.getElementById('pCount').value, 10) || 80;
+    var color = document.getElementById('pColor').value || '#00ff41';
+    var size = parseFloat(document.getElementById('pSize').value) || 3;
+    var speed = parseFloat(document.getElementById('pSpeed').value) || 2;
+    var lines = document.getElementById('pLines').checked;
+    var lineDist = parseInt(document.getElementById('pLineDist').value, 10) || 120;
+    var lineColor = document.getElementById('pLineColor').value || color;
+    var hoverMode = document.getElementById('pHoverMode').value;
+    var clickMode = document.getElementById('pClickMode').value;
+    return {
+      particles: {
+        number: { value: count, density: { enable: true, value_area: 800 } },
+        color: { value: color },
+        size: { value: size },
+        line_linked: {
+          enable: lines,
+          distance: lineDist,
+          color: lineColor,
+          opacity: 0.5,
+          width: 1
+        },
+        move: { enable: true, speed: speed }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: hoverMode !== 'none', mode: hoverMode === 'none' ? 'grab' : hoverMode },
+          onclick: { enable: clickMode !== 'none', mode: clickMode === 'none' ? 'push' : clickMode }
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 0.8 } },
+          bubble: { distance: 180, size: 8, duration: 0.3 },
+          repulse: { distance: 150, duration: 0.6 },
+          push: { particles_nb: 4 },
+          remove: { particles_nb: 2 }
+        }
+      }
+    };
+  }
+
+  function setParticlesFormFromPreset(presetKey) {
+    var p = particlesPresets[presetKey];
+    if (!p || !p.particles) return;
+    var n = p.particles.number;
+    if (n && n.value) {
+      document.getElementById('pCount').value = n.value;
+      document.getElementById('pCountOut').textContent = n.value;
+    }
+    if (p.particles.color && p.particles.color.value) {
+      document.getElementById('pColor').value = p.particles.color.value;
+    }
+    if (p.particles.size && p.particles.size.value) {
+      document.getElementById('pSize').value = p.particles.size.value;
+      document.getElementById('pSizeOut').textContent = p.particles.size.value;
+    }
+    if (p.particles.move && p.particles.move.speed) {
+      document.getElementById('pSpeed').value = p.particles.move.speed;
+      document.getElementById('pSpeedOut').textContent = p.particles.move.speed;
+    }
+    var ll = p.particles.line_linked;
+    document.getElementById('pLines').checked = ll ? ll.enable !== false : true;
+    if (ll && ll.distance) {
+      document.getElementById('pLineDist').value = ll.distance;
+      document.getElementById('pLineDistOut').textContent = ll.distance;
+    }
+    if (ll && ll.color) document.getElementById('pLineColor').value = ll.color;
+  }
+
+  function applyParticlesConfig(config) {
+    if (window.pJSDom && window.pJSDom.length > 0) {
+      try { window.pJSDom[0].fn.vendors.destroypJS(); } catch (e) {}
+    }
+    window.pJSDom = [];
+    try {
+      window.particlesJS('particles-demo', config);
+    } catch (e) { console.warn('Particles apply:', e); }
+  }
+
   function initParticles() {
     var container = document.getElementById('particles-demo');
     if (!container) return;
@@ -1080,25 +1159,36 @@
     }
     if (particlesInited) return;
     particlesInited = true;
-    try {
-      window.pJSDom = window.pJSDom || [];
-      window.particlesJS('particles-demo', particlesPresets.default);
-    } catch (e) { particlesInited = false; console.warn('Particles.js init:', e); return; }
+    document.getElementById('pCount').addEventListener('input', function () {
+      document.getElementById('pCountOut').textContent = this.value;
+    });
+    document.getElementById('pSize').addEventListener('input', function () {
+      document.getElementById('pSizeOut').textContent = this.value;
+    });
+    document.getElementById('pSpeed').addEventListener('input', function () {
+      document.getElementById('pSpeedOut').textContent = this.value;
+    });
+    document.getElementById('pLineDist').addEventListener('input', function () {
+      document.getElementById('pLineDistOut').textContent = this.value;
+    });
+    document.getElementById('pApply').addEventListener('click', function () {
+      applyParticlesConfig(getParticlesConfigFromForm());
+      document.querySelectorAll('.particles-preset').forEach(function (b) { b.classList.remove('active'); });
+    });
     document.querySelectorAll('.particles-preset').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var preset = this.getAttribute('data-preset');
         if (!particlesPresets[preset]) return;
         document.querySelectorAll('.particles-preset').forEach(function (b) { b.classList.remove('active'); });
         this.classList.add('active');
-        if (window.pJSDom && window.pJSDom.length > 0) {
-          try { window.pJSDom[0].fn.vendors.destroypJS(); } catch (err) {}
-        }
-        window.pJSDom = [];
-        try {
-          window.particlesJS('particles-demo', particlesPresets[preset]);
-        } catch (err) { console.warn('Particles preset:', err); }
+        setParticlesFormFromPreset(preset);
+        applyParticlesConfig(particlesPresets[preset]);
       });
     });
+    try {
+      window.pJSDom = window.pJSDom || [];
+      window.particlesJS('particles-demo', getParticlesConfigFromForm());
+    } catch (e) { particlesInited = false; console.warn('Particles.js init:', e); return; }
   }
   window.addEventListener('load', function () {
     initParticles();
