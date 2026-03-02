@@ -52,7 +52,7 @@ body::before {
   inset: 0;
   background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
   pointer-events: none;
-  z-index: 9998;
+  z-index: 1;
 }
 
 body::after {
@@ -551,7 +551,7 @@ body::after {
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
+  z-index: 10000;
   padding: 24px;
   backdrop-filter: blur(4px);
 }
