@@ -38,6 +38,7 @@
     <a href="#tools" class="nav-link">Tools</a>
     <a href="#ping" class="nav-link">Ping</a>
     <a href="#cookies" class="nav-link">Cookies</a>
+    <a href="#order" class="nav-link">Заказать сайт</a>
     <a href="#contact" class="nav-link">Контакты</a>
   </nav>
   <header id="hero" class="hero">
@@ -499,6 +500,53 @@
     <p class="util-desc">Текущие cookies этой страницы.</p>
     <button type="button" class="btn btn-secondary" id="cookiesRefresh">Обновить</button>
     <pre id="cookiesOutput" class="util-output terminal-box" style="margin-top:12px;min-height:60px"></pre>
+  </section>
+  <section id="order" class="section order-section">
+    <h2 class="section-title order-title">Рассчитайте стоимость и закажите сайт</h2>
+    <p class="order-sub">Выберите тип проекта и опции — получите ориентир по цене. Ниже оставьте заявку — ответим в Telegram.</p>
+    <div class="order-block">
+      <div class="order-calc">
+        <h3 class="order-calc-title">Калькулятор стоимости</h3>
+        <label class="order-label">Тип сайта</label>
+        <select id="orderType" class="order-select">
+          <option value="1500">Лендинг (одна страница)</option>
+          <option value="3500">Сайт-каталог (до 10 страниц)</option>
+          <option value="8000">Интернет-магазин (базовый)</option>
+          <option value="12000">Корпоративный сайт (небольшой)</option>
+          <option value="20000">Под ключ (дизайн + вёрстка + контент)</option>
+        </select>
+        <label class="order-label">Дополнительно</label>
+        <div class="order-options">
+          <label class="order-check"><input type="checkbox" id="orderAdapt" checked> Адаптив под мобильные</label>
+          <label class="order-check"><input type="checkbox" id="orderSeo"> Базовая SEO-оптимизация (+500 ₽)</label>
+          <label class="order-check"><input type="checkbox" id="orderIntegr"> Интеграции (оплата, форма) (+1 500 ₽)</label>
+          <label class="order-check"><input type="checkbox" id="orderDesign"> Уникальный дизайн с нуля (+2 000 ₽)</label>
+        </div>
+        <div class="order-total">
+          <span class="order-total-label">Итого от</span>
+          <span id="orderTotal" class="order-total-value">1 500 ₽</span>
+        </div>
+        <p class="order-note">Цены для старта. Точную сумму обсудим в переписке — без обязательств.</p>
+      </div>
+      <div class="order-form-wrap">
+        <h3 class="order-form-title">Оставить заявку</h3>
+        <form id="orderForm" class="order-form">
+          <input type="text" id="orderName" placeholder="Ваше имя" required>
+          <input type="text" id="orderContact" placeholder="Telegram или email" required>
+          <select id="orderWhat">
+            <option value="">Что нужно? (или выбери в калькуляторе слева)</option>
+            <option value="Лендинг">Лендинг</option>
+            <option value="Каталог">Сайт-каталог</option>
+            <option value="Интернет-магазин">Интернет-магазин</option>
+            <option value="Корпоративный сайт">Корпоративный сайт</option>
+            <option value="Под ключ">Под ключ</option>
+            <option value="Другое">Другое (опишу в сообщении)</option>
+          </select>
+          <textarea id="orderComment" rows="3" placeholder="Кратко опишите задачу или бюджет"></textarea>
+          <button type="submit" class="btn btn-primary order-submit">Отправить в Telegram</button>
+        </form>
+      </div>
+    </div>
   </section>
   <section id="contact" class="section contact-section">
     <h2 class="section-title">[ CONTACT ]</h2>

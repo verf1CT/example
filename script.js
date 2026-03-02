@@ -903,6 +903,77 @@
     }).catch(function () { out.textContent = 'Ошибка'; });
   });
 
+  (function orderSection() {
+    var typeSelect = document.getElementById('orderType');
+    var totalEl = document.getElementById('orderTotal');
+    var orderWhat = document.getElementById('orderWhat');
+    var typeToWhat = { '1500': 'Лендинг', '3500': 'Каталог', '8000': 'Интернет-магазин', '12000': 'Корпоративный сайт', '20000': 'Под ключ' };
+
+    function updateOrderTotal() {
+      var base = parseInt(typeSelect.value, 10) || 0;
+      if (document.getElementById('orderSeo').checked) base += 500;
+      if (document.getElementById('orderIntegr').checked) base += 1500;
+      if (document.getElementById('orderDesign').checked) base += 2000;
+      totalEl.textContent = base.toLocaleString('ru-RU') + ' ₽';
+    }
+
+    function syncCalcToForm() {
+      if (orderWhat && typeSelect) {
+        var val = typeToWhat[typeSelect.value];
+        if (val) {
+          orderWhat.value = val;
+        }
+      }
+    }
+
+    if (typeSelect) {
+      typeSelect.addEventListener('change', function () {
+        updateOrderTotal();
+        syncCalcToForm();
+      });
+    }
+    ['orderSeo', 'orderIntegr', 'orderDesign'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('change', updateOrderTotal);
+    });
+    updateOrderTotal();
+    syncCalcToForm();
+
+    var form = document.getElementById('orderForm');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('orderName').value.trim();
+        var contact = document.getElementById('orderContact').value.trim();
+        var what = orderWhat ? orderWhat.value : '';
+        var comment = document.getElementById('orderComment').value.trim();
+        if (!name || !contact) {
+          showToast('Укажите имя и контакт', 'error');
+          return;
+        }
+        var typeText = typeSelect && typeSelect.selectedOptions && typeSelect.selectedOptions[0] ? typeSelect.selectedOptions[0].text : '';
+        var totalText = totalEl ? totalEl.textContent : '';
+        var extras = [];
+        if (document.getElementById('orderAdapt').checked) extras.push('адаптив');
+        if (document.getElementById('orderSeo').checked) extras.push('SEO');
+        if (document.getElementById('orderIntegr').checked) extras.push('интеграции');
+        if (document.getElementById('orderDesign').checked) extras.push('дизайн с нуля');
+
+        var msg = 'Заявка с сайта\n';
+        msg += 'Имя: ' + name + '\n';
+        msg += 'Контакт: ' + contact + '\n';
+        msg += 'Что нужно: ' + (what || typeText || '—') + '\n';
+        msg += 'По калькулятору: ' + (typeText || '—') + '\n';
+        msg += 'Доп: ' + (extras.length ? extras.join(', ') : 'только база') + '\n';
+        msg += 'Итого от: ' + (totalText || '—') + '\n';
+        if (comment) msg += 'Комментарий: ' + comment;
+        var url = 'https://t.me/verf1CT?text=' + encodeURIComponent(msg);
+        window.open(url, '_blank');
+        showToast('Откроется Telegram — отправьте сообщение', 'success');
+      });
+    }
+  })();
+
   var particlesPresets = {
     default: {
       particles: {
