@@ -1,6 +1,21 @@
 (function () {
   const STORAGE_KEY = 'demo_storage_value';
 
+  var navToggle = document.getElementById('navToggle');
+  var nav = document.getElementById('mainNav');
+  if (navToggle && nav) {
+    navToggle.addEventListener('click', function () {
+      nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', nav.classList.contains('open'));
+    });
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        nav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
   function getTheme() {
     return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   }
@@ -1055,25 +1070,44 @@
     }
   };
 
+  var particlesInited = false;
   function initParticles() {
     var container = document.getElementById('particles-demo');
-    if (!container || typeof window.particlesJS !== 'function') return;
+    if (!container) return;
+    if (typeof window.particlesJS !== 'function') {
+      setTimeout(initParticles, 300);
+      return;
+    }
+    if (particlesInited) return;
+    particlesInited = true;
     try {
+      window.pJSDom = window.pJSDom || [];
       window.particlesJS('particles-demo', particlesPresets.default);
-      document.querySelectorAll('.particles-preset').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var preset = this.getAttribute('data-preset');
-          if (!particlesPresets[preset]) return;
-          document.querySelectorAll('.particles-preset').forEach(function (b) { b.classList.remove('active'); });
-          this.classList.add('active');
-          if (window.pJSDom && window.pJSDom.length > 0) {
-            try { window.pJSDom[0].fn.vendors.destroypJS(); } catch (e) {}
-            window.pJSDom = [];
-          }
+    } catch (e) { particlesInited = false; console.warn('Particles.js init:', e); return; }
+    document.querySelectorAll('.particles-preset').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var preset = this.getAttribute('data-preset');
+        if (!particlesPresets[preset]) return;
+        document.querySelectorAll('.particles-preset').forEach(function (b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        if (window.pJSDom && window.pJSDom.length > 0) {
+          try { window.pJSDom[0].fn.vendors.destroypJS(); } catch (err) {}
+        }
+        window.pJSDom = [];
+        try {
           window.particlesJS('particles-demo', particlesPresets[preset]);
-        });
+        } catch (err) { console.warn('Particles preset:', err); }
       });
-    } catch (e) { console.warn('Particles.js init:', e); }
+    });
   }
-  window.addEventListener('load', initParticles);
+  window.addEventListener('load', function () {
+    initParticles();
+    if (!particlesInited && typeof window.particlesJS !== 'function') {
+      var s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js';
+      s.crossOrigin = 'anonymous';
+      s.onload = initParticles;
+      document.body.appendChild(s);
+    }
+  });
 })();

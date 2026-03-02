@@ -118,6 +118,25 @@ body::after {
   transition: color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
+.nav-toggle {
+  display: none;
+  padding: 8px 14px;
+  border: 1px solid var(--accent);
+  background: var(--bg-card);
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-right: auto;
+}
+
+.nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
 .nav-link:hover {
   color: var(--accent);
   border-color: var(--accent);
@@ -1075,13 +1094,21 @@ body::after {
 }
 
 .particles-container {
+  position: relative;
   width: 100%;
   height: 320px;
+  min-height: 200px;
   border-radius: 0;
   overflow: hidden;
   background: var(--bg-card);
   border: 1px solid var(--accent);
   box-shadow: var(--glow);
+}
+
+.particles-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 #chartCanvas {
@@ -1533,11 +1560,35 @@ body::after {
 
 @media (max-width: 768px) {
   .nav {
-    padding: 8px;
+    padding: 10px 14px;
+    flex-wrap: nowrap;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--accent);
+    gap: 4px;
+  }
+  .nav.open .nav-menu {
+    display: flex;
+  }
+  .nav.open .nav-toggle {
+    border-color: var(--accent-hover);
+    box-shadow: var(--glow);
   }
   .nav-link {
-    padding: 6px 10px;
-    font-size: 0.8rem;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: left;
+    border-radius: 0;
   }
   .carousel-prev {
     left: 8px;
@@ -1555,6 +1606,30 @@ body::after {
     height: 40px;
     font-size: 1.2rem;
   }
+}
+
+.float-order {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 998;
+  padding: 12px 20px;
+  border: 1px solid var(--accent);
+  background: var(--bg-card);
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.float-order:hover {
+  background: rgba(0,255,65,0.15);
+  box-shadow: var(--glow);
+  color: var(--accent);
 }
 
 .back-to-top {

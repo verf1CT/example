@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Возможности</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +12,9 @@
 </head>
 <body>
   <button id="themeToggle" class="theme-toggle" aria-label="Тема">◐</button>
-  <nav class="nav">
+  <nav class="nav" id="mainNav">
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Меню" aria-expanded="false">Навигация</button>
+    <div class="nav-menu" id="navMenu">
     <a href="#hero" class="nav-link">Главная</a>
     <a href="#counters" class="nav-link">Счётчики</a>
     <a href="#tabs" class="nav-link">Вкладки</a>
@@ -40,6 +43,7 @@
     <a href="#cookies" class="nav-link">Cookies</a>
     <a href="#order" class="nav-link">Заказать сайт</a>
     <a href="#contact" class="nav-link">Контакты</a>
+    </div>
   </nav>
   <header id="hero" class="hero">
     <div class="hero-bg"></div>
@@ -552,6 +556,7 @@
     <h2 class="section-title">[ CONTACT ]</h2>
     <p class="contact-text">Связь: <a href="https://t.me/verf1CT" target="_blank" rel="noopener" class="contact-link" data-tooltip="Написать в Telegram">Telegram — verf1CT</a></p>
   </section>
+  <a href="#order" class="float-order" id="floatOrder" aria-label="Заказать сайт">Заказать</a>
   <button id="backToTop" class="back-to-top" aria-label="Наверх">↑</button>
   <div class="scroll-progress" id="scrollProgress"></div>
   <div id="modalOverlay" class="modal-overlay">
@@ -563,7 +568,7 @@
   </div>
   <div id="toastContainer" class="toast-container"></div>
   <div id="tooltip" class="tooltip"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js" integrity="sha512-2e9i8+jBXQXfYD4R4R6T6qjycEKR0qNnmWKTZV/zTBPZQ5gN0q2qFqTqy6L0vJqG4N2VNMbP1Q7gX/w6LgA==" crossorigin="anonymous"></script>
+  <script src="particles.js-master/particles.min.js" onerror="this.onerror=null;var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js';s.crossOrigin='anonymous';document.body.appendChild(s);"></script>
   <script src="script.js"></script>
 </body>
 </html>
